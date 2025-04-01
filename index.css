@@ -3,11 +3,19 @@ h1 {
 }
 
 .card {
+  height: 500px;
+  width: 300px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 300px;
   margin: auto;
   text-align: center;
   font-family: arial;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; 
+}
+
+.card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .title {
@@ -15,3 +23,14 @@ h1 {
   font-size: 18px;
 }
 
+#btn-container {
+  padding-top: 2em;
+  padding-bottom: 4em;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+#load-more{
+  margin: auto;
+}
