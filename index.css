@@ -1,5 +1,10 @@
-h1 {
+#header {
     text-align: center;
+    padding-top: 20px;
+    margin: 10px;
+    color:black;
+    text-shadow: 2px 2px gainsboro;
+    cursor: pointer;
 }
 
 .container {
@@ -7,7 +12,7 @@ h1 {
 }
 
 .card {
-  height: 500px;
+  height: 550px;
   width: 300px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   margin: auto;
@@ -16,6 +21,11 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: space-between; 
+}
+
+.card img{
+  padding: 10px 0;
+  border-radius: 50%;
 }
 
 .card:hover {
@@ -47,7 +57,8 @@ h1 {
   height: 50px;
   border-radius: 30px;
   padding-left: 35px;
-  border: none;
+  background: transparent;
+  width: 300px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -57,4 +68,14 @@ h1 {
   left: 15px;
   transform: translateY(-50%);
   color: #888;
+}
+
+#search-box {
+  background-position: 10px 12px; 
+  background-repeat: no-repeat; 
+  width: 100%; 
+  font-size: 16px; 
+  padding: 12px 20px 12px 40px; 
+  border: 1px solid #ddd; 
+  margin-bottom: 12px;
 }
