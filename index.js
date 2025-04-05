@@ -2,15 +2,36 @@ let usersArray = [];
 let currentIdx = 0;
 let usersPerPage = 8;
 
+function clearRandomUserDisplay() {
+  const grid = document.getElementById("randomUser");
+  grid.innerHTML = "";
+}
+
 function getData() {
-  console.log("Loading user data")
+  console.log("Loading user data");
+  usersArray = [];
   fetch("https://randomuser.me/api/?results=50&nat=dk,fr,gb,de,es")
     .then((response) => response.json())
     .then((data) => data.results.forEach((user) => usersArray.push(user)))
-    .then(()=> render())
+    .then(() => render())
     .catch((error) => console.error("Error", error));
 }
 
+function getDataWithParams(countryParam, genderParam) {
+  usersArray = [];
+  const queryParam = new URLSearchParams({
+    results: 50,
+    nat: countryParam,
+    gender: genderParam,
+  });
+  console.log("Loading user data with params: " + queryParam);
+  fetch("https://randomuser.me/api/?" + queryParam)
+    .then((response) => response.json())
+    .then((data) => data.results.forEach((user) => usersArray.push(user)))
+    .then(() => clearRandomUserDisplay())
+    .then(() => render())
+    .catch((error) => console.error("Error", error));
+}
 // bug when writing more than 5 countries in URL https://randomuser.me/api/?nat=dk,fr,gb,de,ie,es,it,nl,no 
 
 function render() {
@@ -70,11 +91,77 @@ getData();
 /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
 function openNav() {
   document.getElementById("mySidebar").style.width = "250px";
-  document.getElementById("main").style.marginLeft = "250px";
 }
 
 /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
 function closeNav() {
   document.getElementById("mySidebar").style.width = "0";
-  document.getElementById("main").style.marginLeft = "0";
+}
+
+function countryFilterParam(filterCountry) {
+  let countries = "";
+  for (let i = 0; i < filterCountry.length; i++) {
+    const country = filterCountry[i]
+    if (country.checked) {
+      if (countries != "") {
+        countries += ",";
+      }
+      countries += country.value;
+    }
+  }
+  console.log("countries: " + countries);
+  return countries;
+}
+
+function genderFilterParam(filterGender) {
+  let gender = "";
+  for (let i = 0; i < filterGender.length; i++) {
+    const genderChoice = filterGender[i]
+    if (genderChoice.checked) {
+      if (genderChoice.value === "both") {
+        gender = "";
+      } else {
+        gender = genderChoice.value;
+      }
+    }
+  }
+  console.log("gender: " + gender);
+  return gender;
+}
+
+
+function applyFilters() {
+  //Fetch all checkboxes in country filter
+  const filterCountry = document.getElementById("country-filter").getElementsByTagName("input");
+  const countryParam = countryFilterParam(filterCountry);
+  //Fetch all radio buttons in gender filter
+  const genderFilter = document.getElementById("gender-filter").getElementsByTagName("input");
+  const genderParam = genderFilterParam(genderFilter);
+  getDataWithParams(countryParam, genderParam);
+
+}
+
+function clearFilters() {
+  document.getElementById("country-filter").reset();
+  document.getElementById("gender-filter").reset();
+  //Fetch new data without any filters
+  getDataWithParams("","");
+}
+
+document.getElementById("save-filter").addEventListener("click", applyFilters);
+document.getElementById("clear-filter").addEventListener("click", clearFilters);
+
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function () {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
 }
