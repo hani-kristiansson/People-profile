@@ -21,7 +21,7 @@ You can view the live demo of the project at: [**People Profile Demo**](https://
   - Large : 4 profiles per row (4x4 grid)
 - **“Send message” button**: Automatically creates a greeting message with the user’s name and country (e.g., "Bonjour" for France, "Hola" for Spain)
 - Click the **header** to reload page
-- **“Load more” button**: Adds 8 more profiles
+- **“Load more” button**: Adds 8 more profiles. Button is hidden when it reaches end of pre-loaded user profiles
 
 ---
 
