@@ -1,4 +1,6 @@
-# 🇪🇺 **Europé Connect – Project Overview**
+# 🇪🇺 **Europé Connect 
+
+## 🌐 **Project Overview**
 
 This project was created as part of an **internship task**, where I developed a simple web app that displays user profiles fetched from [randomuser.me](https://randomuser.me). 
 It includes search option by name and filter options by country and gender. The website also adapts its layout for different screen sizes.
