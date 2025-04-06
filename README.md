@@ -1,4 +1,4 @@
-# 🇪🇺 **Europé Connect 
+# 🇪🇺 **Europé Connect** 
 
 ## 🌐 **Project Overview**
 
