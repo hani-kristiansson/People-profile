@@ -2,7 +2,7 @@
 
 ## 🌐 **Project Overview**
 
-This project was created as part of an **code test for internship**, where I developed a simple web app that displays user profiles fetched from [randomuser.me](https://randomuser.me). 
+A simple web app that displays user profiles fetched from [randomuser.me](https://randomuser.me). 
 It includes search option by name and filter options by country and gender. The website also adapts its layout for different screen sizes.
 
 You can view the live demo of the project at: [**People Profile Demo**](https://hani-kristiansson.github.io/People-profile/).
